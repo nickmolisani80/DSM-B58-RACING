@@ -1,96 +1,43 @@
-const tracks = [
-  { name:'US 13 Dragway', city:'Delmar, DE', lat:38.472, lon:-75.560, elev:50, schedule:'https://www.us13dragway.com/' },
-  { name:'Maryland International Raceway', city:'Mechanicsville, MD', lat:38.395, lon:-76.847, elev:90, schedule:'https://goracemir.com/' },
-  { name:'Cecil County Dragway', city:'Rising Sun, MD', lat:39.692, lon:-76.061, elev:320, schedule:'https://cecilcountydragway.com/' },
-  { name:'Maple Grove Raceway', city:'Mohnton, PA', lat:40.210, lon:-75.994, elev:550, schedule:'https://www.maplegroveraceway.com/' },
-  { name:'Atco Dragway Area', city:'Atco, NJ', lat:39.769, lon:-74.887, elev:110, schedule:'https://www.nhra.com/tracks' },
-  { name:'Virginia Motorsports Park', city:'Dinwiddie, VA', lat:37.165, lon:-77.521, elev:145, schedule:'https://racevmp.com/' }
+const tracks=[
+ {name:'US 13 Dragway',city:'Delmar, DE',lat:38.4566,lon:-75.5613,elev:50,schedule:'https://www.us13dragway.com/'},
+ {name:'Maple Grove Raceway',city:'Mohnton, PA',lat:40.2087,lon:-75.9681,elev:548,schedule:'https://www.maplegroveraceway.com/'},
+ {name:'Cecil County Dragway',city:'Rising Sun, MD',lat:39.6767,lon:-76.0585,elev:320,schedule:'https://cecilcountydragway.com/'},
+ {name:'Capitol Raceway',city:'Crofton, MD',lat:39.0454,lon:-76.7058,elev:150,schedule:'https://www.capitolraceway.com/'},
+ {name:'Mason-Dixon Dragway',city:'Boonsboro, MD',lat:39.5449,lon:-77.6858,elev:580,schedule:'https://www.masondixondragway.com/'},
+ {name:'Virginia Motorsports Park',city:'Dinwiddie, VA',lat:37.1652,lon:-77.4931,elev:140,schedule:'https://racevmp.com/'}
 ];
-
-function estimateDA(tempF, humidity, pressureHpa, elevationFt){
-  const tempC = (tempF - 32) * 5/9;
-  const pressureInHg = pressureHpa * 0.0295299830714;
-  const stationPressure = pressureInHg;
-  const standardPressure = 29.92 * Math.pow(1 - 0.0000068753 * elevationFt, 5.2559);
-  const pressureAltitude = elevationFt + 1000 * (standardPressure - stationPressure);
-  const isaTempC = 15 - (1.98 * elevationFt / 1000);
-  const dewPenalty = Math.max(0, humidity - 35) * 4;
-  return Math.round(pressureAltitude + 120 * (tempC - isaTempC) + dewPenalty);
+function saturationVaporPressure(tempC){return 6.1078*Math.pow(10,(7.5*tempC)/(237.3+tempC));}
+function estimateDA(tempC,pressureHpa,rh,elevFt){
+ const tempF=tempC*9/5+32;
+ const pressureInHg=pressureHpa*0.0295299830714;
+ const stationAlt=elevFt;
+ const pressureAlt=(29.92-pressureInHg)*1000+stationAlt;
+ const isaTempC=15-(stationAlt*0.0019812);
+ const vapor=saturationVaporPressure(tempC)*(rh/100);
+ const virtualTempC=(tempC+273.15)/(1-0.378*(vapor/pressureHpa))-273.15;
+ const da=pressureAlt+118.8*(virtualTempC-isaTempC);
+ return {da:Math.round(da),tempF:Math.round(tempF),pressureInHg:pressureInHg.toFixed(2)};
 }
-
-function buildTrackCards(){
-  const list = document.getElementById('track-list');
-  if(!list) return;
-  list.innerHTML = tracks.map(t => `
-    <article class="track-card">
-      <span class="pill">Track</span>
-      <h3>${t.name}</h3>
-      <p>${t.city}</p>
-      <div class="meta">
-        <span>Approx. elevation: ${t.elev} ft</span>
-        <span>Weather/DA card included below</span>
-      </div>
-      <div class="button-row">
-        <a href="${t.schedule}" target="_blank" rel="noreferrer">Schedule</a>
-        <a href="#weather">Weather + DA</a>
-      </div>
-    </article>
-  `).join('');
-}
-
+function wxCode(code){const map={0:'Clear',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Rime fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm'};return map[code]||'Conditions';}
 async function loadWeather(){
-  const grid = document.getElementById('weather-grid');
-  if(!grid) return;
-  grid.innerHTML = tracks.map(t => `<article class="weather-card"><h3>${t.name}</h3><p>Loading live conditions…</p></article>`).join('');
-  const cards = [...grid.children];
-  await Promise.all(tracks.map(async (t, i) => {
-    try{
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${t.lat}&longitude=${t.lon}&current=temperature_2m,relative_humidity_2m,surface_pressure,wind_speed_10m,wind_direction_10m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
-      const res = await fetch(url);
-      if(!res.ok) throw new Error('Weather fetch failed');
-      const data = await res.json();
-      const c = data.current;
-      const da = estimateDA(c.temperature_2m, c.relative_humidity_2m, c.surface_pressure, t.elev);
-      cards[i].innerHTML = `
-        <span class="pill">Live Conditions</span>
-        <h3>${t.name}</h3>
-        <p>${t.city}</p>
-        <div class="weather-metric">
-          <div><span>Temp</span><b>${Math.round(c.temperature_2m)}°F</b></div>
-          <div><span>Humidity</span><b>${Math.round(c.relative_humidity_2m)}%</b></div>
-          <div><span>Wind</span><b>${Math.round(c.wind_speed_10m)} mph</b></div>
-          <div><span>Est. DA</span><b>${da.toLocaleString()} ft</b></div>
-        </div>
-        <div class="button-row"><a href="${t.schedule}" target="_blank" rel="noreferrer">Track Schedule</a></div>
-      `;
-    }catch(err){
-      cards[i].innerHTML = `
-        <span class="pill">Track Conditions</span>
-        <h3>${t.name}</h3>
-        <p>${t.city}</p>
-        <p class="error">Live weather did not load in this browser. Track schedule link still works.</p>
-        <div class="button-row"><a href="${t.schedule}" target="_blank" rel="noreferrer">Track Schedule</a></div>
-      `;
-    }
-  }));
+ const grid=document.getElementById('trackGrid');
+ grid.innerHTML='<article class="track-card loading">Loading track weather and DA...</article>';
+ const cards=await Promise.all(tracks.map(async t=>{
+  try{
+   const url=`https://api.open-meteo.com/v1/forecast?latitude=${t.lat}&longitude=${t.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,surface_pressure&timezone=auto`;
+   const r=await fetch(url); const data=await r.json(); const c=data.current;
+   const da=estimateDA(c.temperature_2m,c.surface_pressure,c.relative_humidity_2m,t.elev);
+   return `<article class="track-card"><h3>${t.name}</h3><div class="track-meta">${t.city} · Elev. ${t.elev} ft · ${wxCode(c.weather_code)}</div><div class="track-metrics"><div><span>Temp</span><strong>${da.tempF}°F</strong></div><div><span>Humidity</span><strong>${c.relative_humidity_2m}%</strong></div><div><span>Wind</span><strong>${Math.round(c.wind_speed_10m)} mph</strong></div><div><span>Est. DA</span><strong>${da.da.toLocaleString()} ft</strong></div></div><div class="track-meta">Pressure ${da.pressureInHg} inHg · updated ${new Date(c.time).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}</div><div class="links"><a class="mini-link" href="${t.schedule}" target="_blank" rel="noopener">Schedule</a><a class="mini-link" href="https://forecast.weather.gov/MapClick.php?lat=${t.lat}&lon=${t.lon}" target="_blank" rel="noopener">NWS</a></div></article>`;
+  }catch(e){return `<article class="track-card"><h3>${t.name}</h3><div class="track-meta">Weather unavailable right now.</div><div class="links"><a class="mini-link" href="${t.schedule}" target="_blank" rel="noopener">Schedule</a></div></article>`}
+ }));
+ grid.innerHTML=cards.join('');
 }
-
-function runCountdown(){
-  const el = document.querySelector('.countdown');
-  if(!el) return;
-  const target = new Date(el.dataset.target).getTime();
-  const set = () => {
-    const diff = Math.max(0, target - Date.now());
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor(diff % 86400000 / 3600000);
-    const m = Math.floor(diff % 3600000 / 60000);
-    const s = Math.floor(diff % 60000 / 1000);
-    el.querySelector('[data-days]').textContent = d;
-    el.querySelector('[data-hours]').textContent = String(h).padStart(2,'0');
-    el.querySelector('[data-minutes]').textContent = String(m).padStart(2,'0');
-    el.querySelector('[data-seconds]').textContent = String(s).padStart(2,'0');
-  };
-  set(); setInterval(set, 1000);
+function updateCountdown(){
+ const target=new Date('2026-08-14T09:00:00-04:00').getTime();
+ const diff=Math.max(0,target-Date.now());
+ const d=Math.floor(diff/86400000); const h=Math.floor(diff%86400000/3600000); const m=Math.floor(diff%3600000/60000); const s=Math.floor(diff%60000/1000);
+ document.getElementById('days').textContent=d;document.getElementById('hours').textContent=h;document.getElementById('minutes').textContent=m;document.getElementById('seconds').textContent=s;
 }
-
-document.addEventListener('DOMContentLoaded', () => { buildTrackCards(); loadWeather(); runCountdown(); });
+document.getElementById('refreshWeather')?.addEventListener('click',loadWeather);
+updateCountdown(); setInterval(updateCountdown,1000); loadWeather();
+const v=document.getElementById('heroVideo'); if(v){v.play().catch(()=>{});}

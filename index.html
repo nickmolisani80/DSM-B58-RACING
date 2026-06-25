@@ -3,119 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="theme-color" content="#eaf3fb" />
   <title>B58 Supra Race Command Center</title>
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="page-shell">
-    <section class="video-banner" id="top">
-      <video class="hero-video" autoplay muted loop playsinline controls poster="">
-        <source src="/assets/hero.mp4" type="video/mp4" />
-        Your browser does not support video playback.
-      </video>
-      <div class="banner-glass">
-        <p class="eyebrow">B58 Racing • Professional Race Team Mode</p>
-        <h1>Supra Race Command Center</h1>
-        <p>Build data, tuning maps, track weather, DA estimates, events, media, and race planning in one frosted-glass dashboard.</p>
-        <div class="quick-stats">
-          <span><b>44 PSI</b> Boost</span>
-          <span><b>Map 3</b> Race</span>
-          <span><b>958+</b> Public HP</span>
-          <span><b>Ready</b> Status</span>
-        </div>
+  <header class="video-banner" aria-label="Supra race video banner">
+    <video id="heroVideo" class="hero-video" src="./assets/hero.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
+  </header>
+
+  <main class="shell">
+    <section class="status-hero glass" id="home">
+      <div>
+        <p class="eyebrow">Professional Race Team Mode</p>
+        <h1>B58 Racing Command Center</h1>
+        <p class="subhead">Supra build data, tuning maps, track conditions, DA, schedules, media, and race planning in one live dashboard.</p>
+      </div>
+      <div class="status-grid">
+        <article><span>Boost</span><strong>44 PSI</strong></article>
+        <article><span>Map</span><strong>Map 3</strong></article>
+        <article><span>Public HP</span><strong>958+</strong></article>
+        <article><span>Status</span><strong>Ready</strong></article>
       </div>
     </section>
 
-    <nav class="nav-bar" aria-label="Command Center Navigation">
+    <nav class="nav glass" aria-label="Command center navigation">
       <a href="#home">Home</a>
       <a href="#supra">Supra</a>
-      <a href="#maps">Maps</a>
-      <a href="#tracks">Tracks</a>
-      <a href="#weather">Weather + DA</a>
+      <a href="#maps">Tuning Maps</a>
+      <a href="#tracks">Track Weather + DA</a>
       <a href="#events">Events</a>
-      <a href="#media">Media</a>
+      <a href="#performance">Performance</a>
       <a href="#garage">Garage</a>
     </nav>
 
-    <main>
-      <section class="grid dashboard" id="home">
-        <article class="glass-card wide">
-          <div class="section-label">Next Target</div>
-          <h2>Street Car Takeover • Maple Grove</h2>
-          <p>August 14–15, 2026 • Mohnton, PA</p>
-          <div class="countdown" data-target="2026-08-14T09:00:00-04:00">
-            <div><strong data-days>--</strong><span>Days</span></div>
-            <div><strong data-hours>--</strong><span>Hours</span></div>
-            <div><strong data-minutes>--</strong><span>Minutes</span></div>
-            <div><strong data-seconds>--</strong><span>Seconds</span></div>
-          </div>
-        </article>
-        <article class="glass-card"><span class="section-label">Power</span><h3>Current Public Setup</h3><p class="big">958+ WHP</p><p>Public dyno display number. Full all-out calibration kept private.</p></article>
-        <article class="glass-card"><span class="section-label">Measured</span><h3>60–130 MPH</h3><p class="big">3.6 sec</p><p>Use this as the benchmark for roll-racing projections.</p></article>
-      </section>
+    <section class="countdown glass" id="events-countdown">
+      <div>
+        <p class="eyebrow">Next Major Event</p>
+        <h2>Street Car Takeover — Maple Grove</h2>
+        <p>August 14–15, 2026 · Mohnton, Pennsylvania</p>
+      </div>
+      <div class="gauge-row" id="countdownGauges">
+        <div class="gauge"><strong id="days">--</strong><span>Days</span></div>
+        <div class="gauge"><strong id="hours">--</strong><span>Hours</span></div>
+        <div class="gauge"><strong id="minutes">--</strong><span>Minutes</span></div>
+        <div class="gauge"><strong id="seconds">--</strong><span>Seconds</span></div>
+      </div>
+    </section>
 
-      <section class="glass-card" id="supra">
-        <div class="section-label">Vehicle</div>
-        <h2>2021 Toyota GR Supra B58 Build</h2>
-        <div class="spec-grid">
-          <div><b>Engine</b><span>CP 11:1 pistons, HD pins, Boostline rods, ARP 625+ rod fasteners, ARP 2000 mains, King race bearings, ARP 625+ head studs, OEM head gasket.</span></div>
-          <div><b>Cams / Valvetrain</b><span>Kelford Stage 2 cams and upgraded valve springs.</span></div>
-          <div><b>Turbo System</b><span>KLM manifold, Precision Next Gen 6870, T4 divided housing, likely 1.15 A/R, dual 45 mm Hyper-Gate wastegates.</span></div>
-          <div><b>Fuel / Methanol</b><span>Stock DI, port injection with ID1050 injectors, second fuel pump, six 2.5 GPH meth nozzles on RK Autowerks billet manifold/intercooler brick.</span></div>
-          <div><b>Boost / Tune</b><span>44 lb boost. Mikey Botti tuned. One Ethanol / race calibration notes.</span></div>
-          <div><b>Drivetrain</b><span>Pure Stage 2 transmission, Driveshaft Shop 1200 hp axles, Twisted Tuning front/rear differential braces.</span></div>
+    <section class="grid two" id="supra">
+      <article class="glass card">
+        <p class="eyebrow">Vehicle</p>
+        <h2>2021 Toyota GR Supra B58</h2>
+        <ul class="spec-list">
+          <li><b>Engine:</b> Built B58, CP 11:1 pistons, Boostline rods, King race bearings</li>
+          <li><b>Fasteners:</b> ARP 2000 mains, ARP 625+ head studs, ARP 625+ rod bolts</li>
+          <li><b>Head/Cams:</b> Kelford Stage 2 cams, upgraded valve springs, OEM head gasket</li>
+          <li><b>Turbo:</b> KLM kit, Precision Next Gen 6870, T4 divided housing, dual 45mm Hyper-Gates</li>
+          <li><b>Fuel:</b> Stock DI + ID1050 port injection + second pump</li>
+          <li><b>Meth:</b> Six 2.5 GPH nozzles on RK Autowerks billet manifold/intercooler brick</li>
+          <li><b>Drivetrain:</b> Pure Stage 2 transmission, DSS 1200hp axles, differential braces</li>
+        </ul>
+      </article>
+      <article class="glass card">
+        <p class="eyebrow">Known Performance</p>
+        <h2>Current Race Data</h2>
+        <div class="metric-grid">
+          <div><span>Boost</span><strong>44 lb</strong></div>
+          <div><span>60–130</span><strong>3.6 sec</strong></div>
+          <div><span>Dyno Public</span><strong>958+ WHP</strong></div>
+          <div><span>Tuner</span><strong>Mikey Botti</strong></div>
         </div>
-      </section>
+      </article>
+    </section>
 
-      <section class="glass-card" id="maps">
-        <div class="section-label">Tuning</div>
-        <h2>Power Maps</h2>
-        <div class="table-wrap"><table><thead><tr><th>Map</th><th>Power</th><th>Use</th><th>Notes</th></tr></thead><tbody>
-          <tr><td>Map 1</td><td>650 WHP</td><td>Street / Low boost</td><td>Conservative reference map.</td></tr>
-          <tr><td>Map 2</td><td>747 WHP</td><td>Pump / Street</td><td>Daily-style power level.</td></tr>
-          <tr><td>Map 3</td><td>847 WHP</td><td>Race</td><td>Likely no-cage / 9.0 target planning map.</td></tr>
-          <tr><td>Map 4</td><td>958+ WHP</td><td>Max Street</td><td>Public dyno sheet number.</td></tr>
-          <tr><td>Hidden</td><td>Private</td><td>Full calibration</td><td>Not publicly disclosed.</td></tr>
-        </tbody></table></div>
-      </section>
+    <section class="glass card" id="maps">
+      <p class="eyebrow">Calibration</p>
+      <h2>Tuning Maps</h2>
+      <div class="map-table">
+        <div class="row head"><span>Map</span><span>Power</span><span>Purpose</span><span>Public Notes</span></div>
+        <div class="row"><span>Map 1</span><span>650 hp</span><span>Street / low boost</span><span>Conservative</span></div>
+        <div class="row"><span>Map 2</span><span>747 hp</span><span>Pump / street</span><span>Daily capable</span></div>
+        <div class="row"><span>Map 3</span><span>847 hp</span><span>Race</span><span>Primary event map</span></div>
+        <div class="row"><span>Map 4</span><span>958+ hp</span><span>Max street</span><span>Public dyno number</span></div>
+        <div class="row private"><span>Hidden</span><span>Private</span><span>Full calibration</span><span>Not publicly disclosed</span></div>
+      </div>
+    </section>
 
-      <section id="tracks">
-        <div class="section-heading"><span class="section-label">Within roughly 3 hours</span><h2>Track Database</h2></div>
-        <div class="grid cards-3" id="track-list"></div>
-      </section>
-
-      <section class="glass-card" id="weather">
-        <div class="section-label">Track Conditions</div>
-        <h2>Weather + Estimated Density Altitude</h2>
-        <p>Cards below are wired for live browser fetches from Open-Meteo. DA is estimated from temperature, humidity, pressure, and track elevation. If a browser blocks live fetch, the card shows a safe fallback and schedule links still work.</p>
-        <div class="grid cards-3" id="weather-grid"></div>
-      </section>
-
-      <section class="glass-card" id="events">
-        <div class="section-label">Upcoming</div>
-        <h2>Events</h2>
-        <div class="grid cards-2">
-          <div class="event-card"><h3>Street Car Takeover • Maple Grove</h3><p>Aug. 14–15, 2026 • Maple Grove Raceway, PA</p><a target="_blank" rel="noreferrer" href="https://streetcartakeover.com/">Open SCT</a></div>
-          <div class="event-card"><h3>Sick Week 2027</h3><p>Route and registration details should be verified when officially announced.</p><a target="_blank" rel="noreferrer" href="https://www.sickthemagazine.com/">Open Sick The Magazine</a></div>
+    <section class="glass card" id="tracks">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Live Track Center</p>
+          <h2>Track Weather Conditions + Estimated DA</h2>
+          <p>Weather pulls from Open-Meteo in the browser. DA is an estimate using temperature, pressure, humidity, and track elevation.</p>
         </div>
-      </section>
+        <button id="refreshWeather" class="button">Refresh Weather</button>
+      </div>
+      <div id="trackGrid" class="track-grid">
+        <article class="track-card loading">Loading track weather...</article>
+      </div>
+    </section>
 
-      <section class="glass-card" id="media">
-        <div class="section-label">Media</div>
-        <h2>Media / Dragy / Time Slips</h2>
-        <p>Use this area for Dragy screenshots, timeslips, dyno sheets, race videos, public QR content, and featured clips.</p>
-        <div class="media-placeholders"><div>Dragy Runs</div><div>Timeslips</div><div>Dyno Sheet</div><div>Featured Video</div></div>
-      </section>
+    <section class="grid two" id="events">
+      <article class="glass card event-card">
+        <p class="eyebrow">Upcoming Event</p>
+        <h2>Street Car Takeover — Maple Grove</h2>
+        <p>Aug. 14–15, 2026 · roll racing, drag racing, show, and race weekend planning.</p>
+        <a class="button" href="https://streetcartakeover.com/" target="_blank" rel="noopener">Event Site</a>
+      </article>
+      <article class="glass card event-card">
+        <p class="eyebrow">Upcoming Goal</p>
+        <h2>Sick Week 2027</h2>
+        <p>Route and registration details to be tracked here when official information is released.</p>
+        <a class="button" href="https://www.sickthemagazine.com/" target="_blank" rel="noopener">Sick the Magazine</a>
+      </article>
+    </section>
 
-      <section class="glass-card" id="garage">
-        <div class="section-label">Prep</div>
-        <h2>Garage / Race Weekend Checklist</h2>
-        <ul class="checklist"><li>Fuel / ethanol test</li><li>Methanol level and nozzle check</li><li>Tire pressure baseline</li><li>Torque wheels and suspension</li><li>Helmet / harness / safety gear</li><li>Dragy charged and mounted</li><li>Tools, jack, compressor, straps, spares</li></ul>
-      </section>
-    </main>
-  </div>
-  <script src="/script.js"></script>
+    <section class="grid three" id="performance">
+      <article class="glass card"><p class="eyebrow">Dragy</p><h2>60–130</h2><strong class="big">3.6 sec</strong><p>Add screenshots and run notes here.</p></article>
+      <article class="glass card"><p class="eyebrow">Dyno</p><h2>Public Sheet</h2><strong class="big">958+ WHP</strong><p>Use public-safe number while keeping full calibration private.</p></article>
+      <article class="glass card"><p class="eyebrow">Race Logs</p><h2>Time Slips</h2><strong class="big">Ready</strong><p>Store event, DA, tire pressure, map, boost, and result.</p></article>
+    </section>
+
+    <section class="glass card" id="garage">
+      <p class="eyebrow">Garage</p>
+      <h2>Maintenance + Setup Notes</h2>
+      <div class="garage-grid">
+        <div><b>Suspension:</b> Track spring notes, rear spring testing, lowered setup clearance.</div>
+        <div><b>Tires:</b> Mickey Thompson ET Street R notes, tire pressure logs.</div>
+        <div><b>Safety:</b> Harness bar / SCT setup planning, helmet and cage-limit reminders.</div>
+        <div><b>Parts:</b> Axles, braces, fuel, meth, spare event inventory.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">B58 Racing Command Center · Frosted Glass Build · Root Deploy</footer>
+  <script src="./script.js"></script>
 </body>
 </html>
