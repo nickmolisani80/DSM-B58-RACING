@@ -1,1 +1,9 @@
-{"name":"B58 Supra Race Command Center","short_name":"B58 Command","start_url":"/","display":"standalone","background_color":"#eef4fb","theme_color":"#dbeafe","icons":[]}
+{
+  "name": "B58 Supra Race Command Center",
+  "short_name": "B58 Command",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#edf4fb",
+  "theme_color": "#0ea5e9",
+  "icons": []
+}
