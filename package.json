@@ -1,0 +1,1 @@
+{"scripts":{"build":"mkdir -p public && cp -n index.html public/index.html 2>/dev/null || true && echo static site ready"},"dependencies":{},"devDependencies":{}}
