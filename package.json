@@ -1,9 +1,8 @@
 {
-  "name": "b58-supra-race-command-center",
+  "name": "b58-command-center-root",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "echo static site ready"
-  },
-  "dependencies": {}
+  }
 }
