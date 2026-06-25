@@ -9,8 +9,13 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <header class="video-banner" aria-label="Supra race video banner">
-    <video id="heroVideo" class="hero-video" src="./assets/hero.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
+  <header class="photo-banner" aria-label="Supra rotating photo banner">
+    <div class="photo-stage">
+      <img class="hero-photo active" src="./assets/hero-1.jpeg" alt="Silver Toyota GR Supra at car meet with hood open" />
+      <img class="hero-photo" src="./assets/hero-2.jpeg" alt="B58 Supra engine bay with large turbo and billet manifold" />
+      <img class="hero-photo" src="./assets/hero-3.jpeg" alt="Silver Supra strapped down on dyno" />
+    </div>
+    <div class="photo-dots" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
   </header>
 
   <main class="shell">

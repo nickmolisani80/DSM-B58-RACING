@@ -40,4 +40,16 @@ function updateCountdown(){
 }
 document.getElementById('refreshWeather')?.addEventListener('click',loadWeather);
 updateCountdown(); setInterval(updateCountdown,1000); loadWeather();
-const v=document.getElementById('heroVideo'); if(v){v.play().catch(()=>{});}
+const photos=[...document.querySelectorAll('.hero-photo')];
+const dots=[...document.querySelectorAll('.photo-dots span')];
+let photoIndex=0;
+function showPhoto(i){
+ if(!photos.length) return;
+ photos[photoIndex].classList.remove('active');
+ dots[photoIndex]?.classList.remove('active');
+ photoIndex=(i+photos.length)%photos.length;
+ photos[photoIndex].classList.add('active');
+ dots[photoIndex]?.classList.add('active');
+}
+dots.forEach((dot,i)=>dot.addEventListener('click',()=>showPhoto(i)));
+setInterval(()=>showPhoto(photoIndex+1),6000);
