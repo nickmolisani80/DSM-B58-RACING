@@ -1,97 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DSM Supra Life | B58 Racing Media Center</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSM Supra Life | Public Media Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span>B58</span><em>RACING</em><small>DSM SUPRA LIFE MEDIA PORTAL</small></div>
-    <nav><a href="#photos">Photos</a><a href="#videos">Videos</a><a href="#social">Social</a><a href="#updates">Updates</a><a class="button" href="#qr">Command Center</a></nav>
+    <div class="brand">
+      <span class="badge">B58 RACING</span>
+      <h1>DSM SUPRA LIFE</h1>
+    </div>
+    <nav>
+      <a href="#photos">Photos</a>
+      <a href="#videos">Videos</a>
+      <a href="#posts">Posts</a>
+      <a href="#social">Social</a>
+    </nav>
   </header>
 
   <main>
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="assets/dyno.jpg">
-        <source src="assets/damian-supra-video.mov" type="video/quicktime" />
+      <video class="hero-video" autoplay muted loop playsinline controls poster="assets/images/supra-front.jpeg">
+        <source src="assets/videos/supra-feature-video.mov" type="video/quicktime" />
+        Your browser does not support the video tag.
       </video>
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <p class="eyebrow">Public Media Hub</p>
-        <h1>DSM SUPRA LIFE</h1>
-        <h2>Damian’s 2021 Toyota GR Supra</h2>
-        <p>Photos, videos, build updates, race-day posts, and social links for the B58 Racing Command Center.</p>
-        <div class="hero-actions"><a href="#videos">Watch Video</a><a href="#photos">View Photos</a></div>
+      <div class="hero-overlay">
+        <p class="eyebrow">Public Race Team Media Portal</p>
+        <h2>Photos. Videos. Race Updates. Social Posts.</h2>
+        <p>Follow Damian’s Supra build, track days, dyno sessions, race weekends, and media drops in one public hub.</p>
+        <div class="hero-actions">
+          <a href="#photos" class="button primary">View Gallery</a>
+          <a href="#videos" class="button">Watch Video</a>
+        </div>
       </div>
     </section>
 
-    <section class="feature-grid">
-      <article><strong>MEDIA FIRST</strong><span>Latest photos, reels, clips, and race weekend coverage.</span></article>
-      <article><strong>BUILD STORY</strong><span>Turbo, fuel system, dyno prep, and behind-the-scenes updates.</span></article>
-      <article><strong>PUBLIC QR</strong><span>Scan from the car, trailer, shirts, banners, or race paddock.</span></article>
-      <article><strong>SOCIAL READY</strong><span>Instagram, YouTube, Facebook, and TikTok landing page.</span></article>
+    <section class="quick-grid">
+      <article><strong>Latest Drop</strong><span>Dyno and race prep media</span></article>
+      <article><strong>Featured Car</strong><span>2021 Toyota GR Supra</span></article>
+      <article><strong>Next Focus</strong><span>Street Car Takeover content</span></article>
+      <article><strong>Share</strong><span>Scan QR at the track</span></article>
     </section>
 
-    <section id="photos" class="section two-col">
+    <section id="photos" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Photo Wall</p>
+        <h2>Featured Supra Photos</h2>
+      </div>
+      <div class="gallery">
+        <figure class="wide"><img src="assets/images/supra-dyno.jpg" alt="Damian's Supra on the dyno" /><figcaption>Dyno session</figcaption></figure>
+        <figure><img src="assets/images/supra-track-side.jpeg" alt="Damian's Supra side profile" /><figcaption>Track stance</figcaption></figure>
+        <figure><img src="assets/images/supra-front.jpeg" alt="Damian's Supra front angle" /><figcaption>Front view</figcaption></figure>
+        <figure><img src="assets/images/supra-side.jpeg" alt="Damian's Supra side angle" /><figcaption>Race prep</figcaption></figure>
+        <figure><img src="assets/images/supra-rear.jpeg" alt="Damian's Supra rear angle" /><figcaption>Rear view</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="videos" class="section split">
       <div>
-        <p class="eyebrow">Featured Photos</p>
-        <h2>Damian’s Supra Gallery</h2>
-        <p class="muted">A photo-heavy public page built around the actual car: dyno day, sunset shots, engine bay details, show coverage, and track prep.</p>
+        <p class="eyebrow">Featured Video</p>
+        <h2>Latest Video Post</h2>
+        <p>This section is built for race-day clips, dyno pulls, walkarounds, reels, and YouTube embeds. Replace or add videos anytime by dropping files into <code>assets/videos</code>.</p>
       </div>
-      <div class="photo-mosaic">
-        <img src="assets/sunset.jpeg" alt="Silver GR Supra at sunset" />
-        <img src="assets/dyno.jpg" alt="Supra on dyno" />
-        <img src="assets/engine-front.jpeg" alt="Supra engine bay" />
-        <img src="assets/engine-turbo.jpeg" alt="Blue turbo engine detail" />
-        <img src="assets/engine-show.jpeg" alt="Supra engine bay at show" />
+      <video class="feature-video" controls playsinline poster="assets/images/supra-front.jpeg">
+        <source src="assets/videos/supra-feature-video.mov" type="video/quicktime" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section id="posts" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Post Feed</p>
+        <h2>Latest Updates</h2>
+      </div>
+      <div class="post-grid">
+        <article class="post-card"><img src="assets/images/supra-dyno.jpg" alt="Dyno update" /><div><span>Dyno Day</span><h3>957+ WHP public sheet content ready for fans.</h3></div></article>
+        <article class="post-card"><img src="assets/images/supra-side.jpeg" alt="Race prep" /><div><span>Race Prep</span><h3>Media page now ready for photo and video drops.</h3></div></article>
+        <article class="post-card"><img src="assets/images/supra-rear.jpeg" alt="Track weekend" /><div><span>Track Weekend</span><h3>Built for SCT, Sick Week, roll racing, and drag racing posts.</h3></div></article>
       </div>
     </section>
 
-    <section id="videos" class="section video-section">
-      <div class="section-head"><div><p class="eyebrow">Featured Video</p><h2>Latest Supra Clip</h2></div><a href="#social">Follow for more</a></div>
-      <div class="video-card">
-        <video controls poster="assets/dyno.jpg"><source src="assets/damian-supra-video.mov" type="video/quicktime" /></video>
-        <div><h3>DSM Supra Life — Media Drop</h3><p>Use this block for your latest launch clip, dyno pull, race update, or social reel. New video posts can be added as tiles below.</p><button>Play Featured Video</button></div>
-      </div>
-      <div class="post-row">
-        <article><img src="assets/engine-turbo.jpeg"><b>Turbo System Detail</b><span>Build video post</span></article>
-        <article><img src="assets/sunset.jpeg"><b>Sunset Supra Feature</b><span>Photo reel</span></article>
-        <article><img src="assets/engine-show.jpeg"><b>Behind the Scenes</b><span>Show coverage</span></article>
-      </div>
-    </section>
-
-    <section id="social" class="section social-layout">
+    <section id="social" class="section social-section">
       <div>
-        <p class="eyebrow">Follow & Connect</p>
-        <h2>Social Media Wall</h2>
-        <p class="muted">Designed to send fans straight to your posts and videos while keeping the Command Center as the main hub.</p>
+        <p class="eyebrow">Connect</p>
+        <h2>Follow DSM Supra Life</h2>
+        <p>Add your real Instagram, Facebook, YouTube, and TikTok links here. This page is designed to be the public landing page for the QR code.</p>
       </div>
-      <div class="social-cards">
-        <a>Instagram <span>@b58racing</span></a>
-        <a>YouTube <span>B58 Racing</span></a>
-        <a>Facebook <span>DSM Supra Life</span></a>
-        <a>TikTok <span>@b58racing</span></a>
+      <div class="social-buttons">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">TikTok</a>
       </div>
-    </section>
-
-    <section id="updates" class="section updates">
-      <div class="section-head"><div><p class="eyebrow">Latest Posts</p><h2>Race & Build Updates</h2></div></div>
-      <div class="update-grid">
-        <article><img src="assets/engine-front.jpeg"><h3>Fuel System / Engine Bay Update</h3><p>New photo post highlighting the current B58 setup and engine bay.</p></article>
-        <article><img src="assets/dyno.jpg"><h3>Dyno Day Media</h3><p>Featured image and video block for dyno pulls and tuning clips.</p></article>
-        <article><img src="assets/sunset.jpeg"><h3>Public Feature Photo</h3><p>Hero-quality image for shares, QR visitors, and social posts.</p></article>
+      <div class="qr-card">
+        <div class="qr">DSM<br>QR</div>
+        <strong>Scan at the track</strong>
+        <span>Replace with final Command Center QR code.</span>
       </div>
-    </section>
-
-    <section id="qr" class="qr-section">
-      <div><p class="eyebrow">Scan at the Track</p><h2>B58 Racing Command Center</h2><p>Live photos, videos, updates, social links, build info, and race coverage.</p></div>
-      <div class="qr-box">QR</div>
     </section>
   </main>
 
-  <footer><strong>B58 RACING</strong><span>Built to perform. Driven to win.</span><span>#DSMSUPRALIFE</span></footer>
+  <footer>
+    <strong>DSM Supra Life</strong> · Public Media Portal · Built for B58 Racing
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
