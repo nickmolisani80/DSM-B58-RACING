@@ -3,147 +3,95 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#eaf3fb" />
-  <title>B58 Supra Race Command Center</title>
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="stylesheet" href="./style.css" />
+  <title>DSM Supra Life | B58 Racing Media Center</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="photo-banner" aria-label="Supra rotating photo banner">
-    <div class="photo-stage">
-      <img class="hero-photo active" src="./assets/hero-1.jpeg" alt="Silver Toyota GR Supra at car meet with hood open" />
-      <img class="hero-photo" src="./assets/hero-2.jpeg" alt="B58 Supra engine bay with large turbo and billet manifold" />
-      <img class="hero-photo" src="./assets/hero-3.jpeg" alt="Silver Supra strapped down on dyno" />
-    </div>
-    <div class="photo-dots" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
+  <header class="topbar">
+    <div class="brand"><span>B58</span><em>RACING</em><small>DSM SUPRA LIFE MEDIA PORTAL</small></div>
+    <nav><a href="#photos">Photos</a><a href="#videos">Videos</a><a href="#social">Social</a><a href="#updates">Updates</a><a class="button" href="#qr">Command Center</a></nav>
   </header>
 
-  <main class="shell">
-    <section class="status-hero glass" id="home">
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/dyno.jpg">
+        <source src="assets/damian-supra-video.mov" type="video/quicktime" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Public Media Hub</p>
+        <h1>DSM SUPRA LIFE</h1>
+        <h2>Damian’s 2021 Toyota GR Supra</h2>
+        <p>Photos, videos, build updates, race-day posts, and social links for the B58 Racing Command Center.</p>
+        <div class="hero-actions"><a href="#videos">Watch Video</a><a href="#photos">View Photos</a></div>
+      </div>
+    </section>
+
+    <section class="feature-grid">
+      <article><strong>MEDIA FIRST</strong><span>Latest photos, reels, clips, and race weekend coverage.</span></article>
+      <article><strong>BUILD STORY</strong><span>Turbo, fuel system, dyno prep, and behind-the-scenes updates.</span></article>
+      <article><strong>PUBLIC QR</strong><span>Scan from the car, trailer, shirts, banners, or race paddock.</span></article>
+      <article><strong>SOCIAL READY</strong><span>Instagram, YouTube, Facebook, and TikTok landing page.</span></article>
+    </section>
+
+    <section id="photos" class="section two-col">
       <div>
-        <p class="eyebrow">Professional Race Team Mode</p>
-        <h1>B58 Racing Command Center</h1>
-        <p class="subhead">Supra build data, tuning maps, track conditions, DA, schedules, media, and race planning in one live dashboard.</p>
+        <p class="eyebrow">Featured Photos</p>
+        <h2>Damian’s Supra Gallery</h2>
+        <p class="muted">A photo-heavy public page built around the actual car: dyno day, sunset shots, engine bay details, show coverage, and track prep.</p>
       </div>
-      <div class="status-grid">
-        <article><span>Boost</span><strong>44 PSI</strong></article>
-        <article><span>Map</span><strong>Map 3</strong></article>
-        <article><span>Public HP</span><strong>958+</strong></article>
-        <article><span>Status</span><strong>Ready</strong></article>
+      <div class="photo-mosaic">
+        <img src="assets/sunset.jpeg" alt="Silver GR Supra at sunset" />
+        <img src="assets/dyno.jpg" alt="Supra on dyno" />
+        <img src="assets/engine-front.jpeg" alt="Supra engine bay" />
+        <img src="assets/engine-turbo.jpeg" alt="Blue turbo engine detail" />
+        <img src="assets/engine-show.jpeg" alt="Supra engine bay at show" />
       </div>
     </section>
 
-    <nav class="nav glass" aria-label="Command center navigation">
-      <a href="#home">Home</a>
-      <a href="#supra">Supra</a>
-      <a href="#maps">Tuning Maps</a>
-      <a href="#tracks">Track Weather + DA</a>
-      <a href="#events">Events</a>
-      <a href="#performance">Performance</a>
-      <a href="#garage">Garage</a>
-    </nav>
+    <section id="videos" class="section video-section">
+      <div class="section-head"><div><p class="eyebrow">Featured Video</p><h2>Latest Supra Clip</h2></div><a href="#social">Follow for more</a></div>
+      <div class="video-card">
+        <video controls poster="assets/dyno.jpg"><source src="assets/damian-supra-video.mov" type="video/quicktime" /></video>
+        <div><h3>DSM Supra Life — Media Drop</h3><p>Use this block for your latest launch clip, dyno pull, race update, or social reel. New video posts can be added as tiles below.</p><button>Play Featured Video</button></div>
+      </div>
+      <div class="post-row">
+        <article><img src="assets/engine-turbo.jpeg"><b>Turbo System Detail</b><span>Build video post</span></article>
+        <article><img src="assets/sunset.jpeg"><b>Sunset Supra Feature</b><span>Photo reel</span></article>
+        <article><img src="assets/engine-show.jpeg"><b>Behind the Scenes</b><span>Show coverage</span></article>
+      </div>
+    </section>
 
-    <section class="countdown glass" id="events-countdown">
+    <section id="social" class="section social-layout">
       <div>
-        <p class="eyebrow">Next Major Event</p>
-        <h2>Street Car Takeover — Maple Grove</h2>
-        <p>August 14–15, 2026 · Mohnton, Pennsylvania</p>
+        <p class="eyebrow">Follow & Connect</p>
+        <h2>Social Media Wall</h2>
+        <p class="muted">Designed to send fans straight to your posts and videos while keeping the Command Center as the main hub.</p>
       </div>
-      <div class="gauge-row" id="countdownGauges">
-        <div class="gauge"><strong id="days">--</strong><span>Days</span></div>
-        <div class="gauge"><strong id="hours">--</strong><span>Hours</span></div>
-        <div class="gauge"><strong id="minutes">--</strong><span>Minutes</span></div>
-        <div class="gauge"><strong id="seconds">--</strong><span>Seconds</span></div>
-      </div>
-    </section>
-
-    <section class="grid two" id="supra">
-      <article class="glass card">
-        <p class="eyebrow">Vehicle</p>
-        <h2>2021 Toyota GR Supra B58</h2>
-        <ul class="spec-list">
-          <li><b>Engine:</b> Built B58, CP 11:1 pistons, Boostline rods, King race bearings</li>
-          <li><b>Fasteners:</b> ARP 2000 mains, ARP 625+ head studs, ARP 625+ rod bolts</li>
-          <li><b>Head/Cams:</b> Kelford Stage 2 cams, upgraded valve springs, OEM head gasket</li>
-          <li><b>Turbo:</b> KLM kit, Precision Next Gen 6870, T4 divided housing, dual 45mm Hyper-Gates</li>
-          <li><b>Fuel:</b> Stock DI + ID1050 port injection + second pump</li>
-          <li><b>Meth:</b> Six 2.5 GPH nozzles on RK Autowerks billet manifold/intercooler brick</li>
-          <li><b>Drivetrain:</b> Pure Stage 2 transmission, DSS 1200hp axles, differential braces</li>
-        </ul>
-      </article>
-      <article class="glass card">
-        <p class="eyebrow">Known Performance</p>
-        <h2>Current Race Data</h2>
-        <div class="metric-grid">
-          <div><span>Boost</span><strong>44 lb</strong></div>
-          <div><span>60–130</span><strong>3.6 sec</strong></div>
-          <div><span>Dyno Public</span><strong>958+ WHP</strong></div>
-          <div><span>Tuner</span><strong>Mikey Botti</strong></div>
-        </div>
-      </article>
-    </section>
-
-    <section class="glass card" id="maps">
-      <p class="eyebrow">Calibration</p>
-      <h2>Tuning Maps</h2>
-      <div class="map-table">
-        <div class="row head"><span>Map</span><span>Power</span><span>Purpose</span><span>Public Notes</span></div>
-        <div class="row"><span>Map 1</span><span>650 hp</span><span>Street / low boost</span><span>Conservative</span></div>
-        <div class="row"><span>Map 2</span><span>747 hp</span><span>Pump / street</span><span>Daily capable</span></div>
-        <div class="row"><span>Map 3</span><span>847 hp</span><span>Race</span><span>Primary event map</span></div>
-        <div class="row"><span>Map 4</span><span>958+ hp</span><span>Max street</span><span>Public dyno number</span></div>
-        <div class="row private"><span>Hidden</span><span>Private</span><span>Full calibration</span><span>Not publicly disclosed</span></div>
+      <div class="social-cards">
+        <a>Instagram <span>@b58racing</span></a>
+        <a>YouTube <span>B58 Racing</span></a>
+        <a>Facebook <span>DSM Supra Life</span></a>
+        <a>TikTok <span>@b58racing</span></a>
       </div>
     </section>
 
-    <section class="glass card" id="tracks">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Live Track Center</p>
-          <h2>Track Weather Conditions + Estimated DA</h2>
-          <p>Weather pulls from Open-Meteo in the browser. DA is an estimate using temperature, pressure, humidity, and track elevation.</p>
-        </div>
-        <button id="refreshWeather" class="button">Refresh Weather</button>
-      </div>
-      <div id="trackGrid" class="track-grid">
-        <article class="track-card loading">Loading track weather...</article>
+    <section id="updates" class="section updates">
+      <div class="section-head"><div><p class="eyebrow">Latest Posts</p><h2>Race & Build Updates</h2></div></div>
+      <div class="update-grid">
+        <article><img src="assets/engine-front.jpeg"><h3>Fuel System / Engine Bay Update</h3><p>New photo post highlighting the current B58 setup and engine bay.</p></article>
+        <article><img src="assets/dyno.jpg"><h3>Dyno Day Media</h3><p>Featured image and video block for dyno pulls and tuning clips.</p></article>
+        <article><img src="assets/sunset.jpeg"><h3>Public Feature Photo</h3><p>Hero-quality image for shares, QR visitors, and social posts.</p></article>
       </div>
     </section>
 
-    <section class="grid two" id="events">
-      <article class="glass card event-card">
-        <p class="eyebrow">Upcoming Event</p>
-        <h2>Street Car Takeover — Maple Grove</h2>
-        <p>Aug. 14–15, 2026 · roll racing, drag racing, show, and race weekend planning.</p>
-        <a class="button" href="https://streetcartakeover.com/" target="_blank" rel="noopener">Event Site</a>
-      </article>
-      <article class="glass card event-card">
-        <p class="eyebrow">Upcoming Goal</p>
-        <h2>Sick Week 2027</h2>
-        <p>Route and registration details to be tracked here when official information is released.</p>
-        <a class="button" href="https://www.sickthemagazine.com/" target="_blank" rel="noopener">Sick the Magazine</a>
-      </article>
-    </section>
-
-    <section class="grid three" id="performance">
-      <article class="glass card"><p class="eyebrow">Dragy</p><h2>60–130</h2><strong class="big">3.6 sec</strong><p>Add screenshots and run notes here.</p></article>
-      <article class="glass card"><p class="eyebrow">Dyno</p><h2>Public Sheet</h2><strong class="big">958+ WHP</strong><p>Use public-safe number while keeping full calibration private.</p></article>
-      <article class="glass card"><p class="eyebrow">Race Logs</p><h2>Time Slips</h2><strong class="big">Ready</strong><p>Store event, DA, tire pressure, map, boost, and result.</p></article>
-    </section>
-
-    <section class="glass card" id="garage">
-      <p class="eyebrow">Garage</p>
-      <h2>Maintenance + Setup Notes</h2>
-      <div class="garage-grid">
-        <div><b>Suspension:</b> Track spring notes, rear spring testing, lowered setup clearance.</div>
-        <div><b>Tires:</b> Mickey Thompson ET Street R notes, tire pressure logs.</div>
-        <div><b>Safety:</b> Harness bar / SCT setup planning, helmet and cage-limit reminders.</div>
-        <div><b>Parts:</b> Axles, braces, fuel, meth, spare event inventory.</div>
-      </div>
+    <section id="qr" class="qr-section">
+      <div><p class="eyebrow">Scan at the Track</p><h2>B58 Racing Command Center</h2><p>Live photos, videos, updates, social links, build info, and race coverage.</p></div>
+      <div class="qr-box">QR</div>
     </section>
   </main>
 
-  <footer class="footer">B58 Racing Command Center · Frosted Glass Build · Root Deploy</footer>
-  <script src="./script.js"></script>
+  <footer><strong>B58 RACING</strong><span>Built to perform. Driven to win.</span><span>#DSMSUPRALIFE</span></footer>
+  <script src="script.js"></script>
 </body>
 </html>
